@@ -52,9 +52,9 @@ include('controller/checker.php');
        <center><form id="inspectorForm" action="model/inspectorLogProcess.php" method="post" accept-charset="ISO-8859-1">
             Inspector:
             <select name="inspector">
-                        <?php
-          include ('model/dbopen.php');
-
+     <?php
+          include ('model/dbopen.php');//open database
+           //this script adds all active inspectors to the dropdown list
           $sql = "select * from person where person_type_id = 4 and isActive = 1";
           $result = $conn->query($sql);
 
@@ -65,17 +65,10 @@ include('controller/checker.php');
                
                }
           }
-              ?>
-       <!--<option value=69>Ramon Leon</option>
-      <option value=70>Danny Agnello</option>
-      <option value=71>Jasmine Green</option>
-      <option value=72>Alberto Romero</option>-->
-   
+       ?>
     </select><br><br>
     Building: <br>
     <input type="text" name="building" required><br><br>
-   <!-- Description of Work:
-    <input type="text" name="description" required><br><br>-->
     Descriptiton of Work: <br>
     <textarea class="text" cols="30" rows ="10" name="description" required></textarea><br><br>
     Floors Serviced: <br>
