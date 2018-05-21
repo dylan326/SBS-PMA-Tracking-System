@@ -37,14 +37,14 @@ include('controller/checker.php');
 <?php
 include('model/DatabaseClass.php');
 include('model/dbopen.php');
-
+//create object
 $DatabaseClass = new DatabaseClass();
 
 echo "<center><h2><strong>Schedule From Last Two Weeks</u></strong></h2></center><br><br>";
-
+//statement only shows results from last two weeks
 $sql = "select * from schedule where entry_time > NOW() - INTERVAL 7 DAY order by schedule_id asc";
 $result = $conn->query($sql);
-
+//put it in html table form
 if ($result->num_rows > 0) {
      echo "<table style='width: 100%;'><tr>
     <th>Job Number</th>
