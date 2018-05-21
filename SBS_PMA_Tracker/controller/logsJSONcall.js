@@ -9,7 +9,9 @@ xmlhttp.onreadystatechange = function()
     {
         myObj = JSON.parse(this.responseText);
         for (x in myObj)
-        { if(myObj[x].person_id == 69)
+            
+        { //for the dalily logs each person has to be called separatly.  This needs to be changed to dynamically allocate somehow..
+            if(myObj[x].person_id == 69)
             {
           
             txt +=  "<h4>Ramon</h4><strong style='font-size: large;'> + </strong>" +"<b>Building:</b>  " + myObj[x].building  + "<br><strong style='font-size: large;'> + </strong>" +"<b>Description:</b>  "+ myObj[x].description + "<br><strong style='font-size: large;'> + </strong>" +"<b>Floors serviced:</b>  "  + myObj[x].floors + "<br><strong style='font-size: large;'> + </strong>" +"<b>Issues:</b>  " + myObj[x].issues + "<br><strong style='font-size: large;'> + </strong>" +"<b>Days Left:</b>  " + myObj[x].days_left + "<br><strong style='font-size: large;'> + </strong>" +"<b>Date/time:</b>  " + myObj[x].date_time + "<hr>";
