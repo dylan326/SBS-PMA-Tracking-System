@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Admin Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./view/css/style.css">
+    <link rel="shortcut icon" href="./view/images/sbs.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+<body>
+<center><h1>Admin login</h1><br>
+<center><a id="backToMain" href="ready_pma.php">Back to Main Site</a></center>
+    <img src ="./view/images/sbs.png" >
+</center>
+<br /><br />
+    <center> 
+        <fieldset style="width:35%; border-radius: 5px;">
+            <form method="POST" action="model/adminConnectivity.php"><br><br /> Username <br>
+                <input type="text" name="username" size="30"><br>
+                Password <br><input type="password" name="password" size="30"><br><br />
+                <input id="button" type="submit" name="submit" value="Login">
+            </form>
+            <br />
+        </fieldset> 
+    </center>
+</body>
+</html>
