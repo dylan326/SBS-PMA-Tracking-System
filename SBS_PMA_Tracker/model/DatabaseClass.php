@@ -2,10 +2,10 @@
 
 class DatabaseClass
 {
-    private $correctInfo = false;
+    private $correctInfo = false;//varible used for login method
     
     public function __construct(){}
-    
+    //connection credentials hidden in config file outside root
     private function connect()
     {
         $config = parse_ini_file('/home/u864991580/config.ini');
@@ -17,7 +17,7 @@ class DatabaseClass
         
         return $conn;
     }
-    
+    //prevent XXS attacks
     public function wash($input)
    {
        
@@ -26,6 +26,7 @@ class DatabaseClass
         return $input;
    }
    
+    //login and start session to identify users
     public function login($username, $password)
     {
         $connect = $this->connect();
@@ -52,13 +53,14 @@ class DatabaseClass
             $_SESSION['username'] = $data['username'];
             //$_SESSION['email'] = $data['email'];
             
-            $this->correctInfo = true;
+            $this->correctInfo = true;//if the login was a success trun correct info to true
         }
         
-        return $this->correctInfo;
+        return $this->correctInfo;//else it stays false
         
     }
     
+    //insert user and use prepared statements
     public function insertuser($username, $password)
    {
        $connect = $this->connect();
@@ -73,6 +75,7 @@ class DatabaseClass
 
    }
    
+    //add existing PMA function
    public function add_existing($name, $days, $date_completed)
    {
         $connect = $this->connect();
@@ -83,7 +86,7 @@ class DatabaseClass
         
         return $stmt;
    }
-   
+   //add new PMA
    public function add_new($name, $days)
    {
        $connect = $this->connect();
@@ -106,6 +109,7 @@ class DatabaseClass
         return $stmt;
    }
    
+    //pma name is needed often throughout the program so this functions does this
    public function grabName($pma_id)
    {
        $connect = $this->connect();
@@ -122,6 +126,7 @@ class DatabaseClass
          return $pma_name;
     }
     
+    //insert data to the historical form table untouched by other tables.
     public function historical_form_process($name, $date_completed, $contact_client, $inspector1, $inspector2, $how_long)
     {
         $connect = $this->connect();
@@ -135,6 +140,7 @@ class DatabaseClass
         return $sqlhistorical;
     }
     
+    //reminders to help PMA Manager
     public function save_reminder($reminder)
     {
         $connect = $this->connect();
@@ -149,7 +155,7 @@ class DatabaseClass
     {
         return $this->connect();
     }
-   
+   //often time I need inspectors name for different processes so this does that
    public function getName($inspector)
    {
        $conn = $this->connect();
