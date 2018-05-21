@@ -4,11 +4,11 @@ var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
 var yyyy = today.getFullYear() - 1;
-
+//for date fomatting
 if(dd<10) {
     dd = '0'+dd
 } 
-
+//if month is before october need to add zero in front of number
 if(mm<10) {
     mm = '0'+mm
 } 
