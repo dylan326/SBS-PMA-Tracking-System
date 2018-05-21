@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('../controller/checker.php');
-//file to delete a PMA from the system.  Called rom the controller folder in a confirm function
+//file to delete a PMA from the system.  Called from the controller folder in a confirm function
 //no user input therefor no need for prepared statements
 $pma_id = $_GET['pma_id'];
 include('dbopen.php');
