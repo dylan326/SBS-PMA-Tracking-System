@@ -7,6 +7,7 @@ include('dbopen.php');
 
 $pma_id = $_POST['pma_id'];
 
+//did this file before the database class.  Should use wash method,  when I get time will change
 $building_contact_person_first = $_POST['building_contact_person_first'];
 $building_contact_person_first = htmlspecialchars($building_contact_person_first, ENT_QUOTES, 'UTF-8');
 
@@ -34,7 +35,7 @@ $business_email = $_POST['business_email'];
 $inspector1 = $_POST['inspector1'];
 $inspector2 = $_POST['inspector2'];
 
-//insert person
+//insert person.  prepared statement
 $sqlperson = "insert into person (person_type_id, first_name, last_name) values (?,?,?)";
 $stmtperson = $conn->prepare($sqlperson);
 $stmtperson->bind_param("iss", $person_type, $building_contact_person_first, $building_contact_person_last);
@@ -96,7 +97,9 @@ if(!$stmtcellphone)
    echo "Error: contact administrator";
 }
 $stmtcellphone->close();
-                    
+        
+
+//next inserts utilize the pma_person mapping table and insert into them
 $sqlpma_personclient = "insert into pma_person(pma_id, person_id) values (?,?)";
 $stmt_personclient = $conn->prepare($sqlpma_personclient);
 $stmt_personclient->bind_param("ii", $pma_id, $person_id);
