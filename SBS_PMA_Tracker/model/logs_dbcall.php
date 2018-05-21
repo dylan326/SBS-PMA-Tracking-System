@@ -1,5 +1,5 @@
 <?php
-//file confertts the database call to JSON
+//file converts the database call for logs to JSON
 session_start();
 include('../controller/checker.php');
 include('dbopen.php');
