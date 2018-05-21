@@ -36,9 +36,11 @@ include('controller/checker.php');
 <?php
 include('model/DatabaseClass.php');
 include('model/dbopen.php');
-
+//create object
 $DatabaseClass = new DatabaseClass();
+//button to see the schedule
 echo "<a href='scheduleRead.php' id='see_schedule'>See Schedule</a><hr>";
+//stays 24 hrs helps manager see who he's already scheduled this day
 echo "<strong><u>Recent entries</u></strong><br>";
 
 $sql = "select * from schedule where entry_time > NOW() - INTERVAL 1 DAY";
@@ -46,16 +48,16 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-      
-      $name = $DatabaseClass->getName($row['person_id']);
+    while($row = $result->fetch_assoc()) 
+    {
+        $name = $DatabaseClass->getName($row['person_id']);
         echo "<b>Job Number: </b>".$row["job_number"]. " <b>Job Name: </b>" . $row["job_name"]." <b>Job Date: </b>".$row["date_char"]." <b>Inspector: </b>". $name. "<br>";
     }
 }
 else 
   {
     echo "No Entries yet<br>";
-}
+  }
 
 ?>
 <hr>
@@ -70,9 +72,9 @@ else
             <input type="text" name="date">
             Inspector:
             <select name="inspector">
-                  <?php
+          <?php
           include ('model/dbopen.php');
-
+           //puts all active inspectors into the inspector select form
           $sql = "select * from person where person_type_id = 4 and isActive = 1";
           $result = $conn->query($sql);
 
@@ -82,13 +84,9 @@ else
               echo "<option value='".$row['person_id']."'>".$row['first_name']." ".$row['last_name']."</option>";
                
                }
-          }
-              ?>
-     <!-- <option value=69>Ramon Leon</option>
-      <option value=70>Danny Agnelo</option>
-      <option value=71>Jasmine</option>-->
-      
-   
+            }
+          ?>
+    
     </select>
     
     <input type="submit">
