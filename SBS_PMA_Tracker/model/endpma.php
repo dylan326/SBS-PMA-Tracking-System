@@ -13,13 +13,16 @@ if ($result->num_rows > 0)
     // output data of each row
     while($row = $result->fetch_assoc()) 
     {//set person id to results
-    $pma_name = $row['name'];
+        $pma_name = $row['name'];
     }
-} else
+} 
+else
 {
     echo "PMA does not exist.  ERROR contact administrator";
 }
 
+//sets in_prog boolean varible to zero and updates date to current date. Thust taking the 
+//pma out of in_prog and back to current.
 $sql = "UPDATE pma SET in_prog= 0, start_date=null, date_completed=curdate() WHERE pma_id=$pma_id";
 
 if ($conn->query($sql) === TRUE) 
