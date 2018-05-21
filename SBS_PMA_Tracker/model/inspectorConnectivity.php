@@ -1,20 +1,15 @@
 <?php
-//file logs in a certified user
-session_start();
+   //file logs in a certified user
+    session_start();
 
- include('DatabaseClass.php');
-    
+    include('DatabaseClass.php');
+    //create object
     $DatabaseClass = new DatabaseClass();
-    
-   
-    
+    //prevent XXS Attack
     $usernameWashed = $DatabaseClass->wash($_POST['username']);
-    
     $passwordWashed = $DatabaseClass->wash($_POST['password']);
-    
-   
-    
-   $isValid = $DatabaseClass->login($usernameWashed, $passwordWashed);
+    //call login method.  Anyone in system can login to inspector section but inspectors cannot log in to main system. 
+    $isValid = $DatabaseClass->login($usernameWashed, $passwordWashed);
     
     if ($isValid == true )
        {
