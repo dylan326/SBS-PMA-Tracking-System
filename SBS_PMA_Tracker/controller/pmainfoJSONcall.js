@@ -4,7 +4,7 @@
 //AJAX call to output JSON data to pmainfo.php
 window.onload = function pmainfocall()
 {
-var obj, dbParam, xmlhttp, myObj, x, txt = "", pma_id = document.getElementById("pma_id_grab");
+var obj, dbParam, xmlhttp, myObj, x, txt = "", pma_id = document.getElementById("pma_id_grab");//make pma_id a JS var
 obj = { "table":"pma"};
 dbParam = JSON.stringify(obj);
 xmlhttp = new XMLHttpRequest();
@@ -15,7 +15,7 @@ xmlhttp.onreadystatechange = function()
         myObj = JSON.parse(this.responseText);
          for (x in myObj) 
          { 
-             if (pma_id.innerHTML == myObj[x].pma_id) 
+             if (pma_id.innerHTML == myObj[x].pma_id) //checks db for specific pma then outputs the information for that.
             {
             txt += "<b>" + myObj[x].person_type_desc + "</b>: " + myObj[x].first_name +  " " + myObj[x].last_name + " <b>--</b> "+ myObj[x].phone_type_desc + "<b>:</b> " + myObj[x].phone + " " +
              " <a href='mailto:"+ myObj[x].email + "'>"+ myObj[x].email + "</a><br>";
