@@ -26,35 +26,7 @@ $date_completedWashed = $DatabaseClass->wash($_POST['date_completed']);
     echo "ERROR IN ADDIING PMA. Contact Administrator. re-directing.... ";
      
  }
-//Admin database call that inserts an existing PMA
-/*session_start();
-include('../controller/checker.php');
-include('dbopen.php');
 
-$name = $_POST['name'];
-$name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-
-$days = $_POST['days'];
-$days = htmlspecialchars($days, ENT_QUOTES, 'UTF-8');
-
-$date_completed = $_POST['date_completed'];
-$date_completed = htmlspecialchars($date_completed, ENT_QUOTES, 'UTF-8');
-
-// prepare and bind
-$stmt = $conn->prepare("insert into pma (name, days, in_prog, start_date, date_completed) values (?,?,0,null,?)");
-$stmt->bind_param("sss", $name, $days, $date_completed);
-
-$stmt->execute();
-
-if($stmt)
-{
-    header("refresh:3; url=../adminchoose.php");
-    echo "Existing PMA added, re-directing.... ";
-}
-
-
-$stmt->close();
-$conn->close();*/
 
 
 ?>
