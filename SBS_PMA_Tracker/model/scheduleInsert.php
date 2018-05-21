@@ -2,6 +2,7 @@
 
 include ('dbopen.php');
 
+//prevent XXS Attack - could use Database class to do these
 $job_number = $_POST['job_number'];
 $job_number = htmlspecialchars($job_number, ENT_QUOTES, 'UTF-8');
 
@@ -15,7 +16,7 @@ $inspector = $_POST['inspector'];
 
 
 
-
+//insert prepared statment
 $sql = "insert into schedule (person_id, job_number, job_name, date_char) values (?,?,?,?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("isss", $inspector, $job_number, $job_name, $date);
